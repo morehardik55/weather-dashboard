@@ -31,16 +31,6 @@ A modern weather application built with **React** and **Vite**, featuring a clea
 - Vercel (Deployment)
 
 ---
-
-
-## ⚙️ Environment Variables
-
-Create a `.env` file in the project root:
-
-```env
-VITE_WEATHER_API_KEY=your_openweather_api_key
-
-
 🚀 Local Setup
 git clone https://github.com/hardikmore/weather-dashboard.git
 cd weather-dashboard
