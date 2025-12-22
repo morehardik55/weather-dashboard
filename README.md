@@ -30,12 +30,16 @@ A modern weather application built with **React** and **Vite**, featuring a clea
 - OpenWeather API
 - Vercel (Deployment)
 
+
 ---
+
+
 🚀 Local Setup
 git clone https://github.com/hardikmore/weather-dashboard.git
 cd weather-dashboard
 npm install
 npm run dev
+
 
 
 📚 What I Learned
@@ -51,9 +55,11 @@ Glassmorphism UI design principles
 Deploying frontend apps to production
 
 
+
 👤 Author
 Hardik More
 GitHub: https://github.com/morehardik55
+
 
 
 📄 License
