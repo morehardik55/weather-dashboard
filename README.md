@@ -35,7 +35,7 @@ A modern weather application built with **React** and **Vite**, featuring a clea
 
 
 🚀 Local Setup
-git clone https://github.com/hardikmore/weather-dashboard.git
+git clone https://github.com/your_username/weather-dashboard.git
 cd weather-dashboard
 npm install
 npm run dev
