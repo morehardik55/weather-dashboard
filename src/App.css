@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: #000;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* FULLSCREEN BACKGROUND */
+.app {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+
+  background-image:
+    linear-gradient(
+      rgba(5, 8, 20, 0.75),
+      rgba(5, 8, 20, 0.9)
+    ),
+    url("./assets/weather-bg.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* ATMOSPHERIC OVERLAY */
+.app::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top,
+    rgba(255, 255, 255, 0.15),
+    rgba(0, 0, 0, 0.7)
+  );
+  pointer-events: none;
+}
+
+/* GLASS CARD */
+.card {
+  width: 100%;
+  max-width: 420px;
+  padding: 32px;
+  border-radius: 24px;
+
+  background: rgba(18, 22, 40, 0.75);
+  backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* AMBIENT GLOW */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(138, 99, 255, 0.35),
+    rgba(255, 200, 100, 0.25)
+  );
+  filter: blur(45px);
+  z-index: -1;
+}
+
+/* TITLE */
+.card h1 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+/* SEARCH */
+.input-group {
+  display: flex;
+  gap: 12px;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 14px 16px;
+  border-radius: 16px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  border: none;
+  outline: none;
+}
+
+.input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.input-group button {
+  padding: 0 22px;
+  border-radius: 16px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #6a5cff, #8e6cff);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-group button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(106, 92, 255, 0.55);
+}
+
+.input-group button:disabled {
+  opacity: 0.6;
+}
+
+/* STATUS */
+.status {
+  text-align: center;
+  min-height: 22px;
+}
+
+.error {
+  font-size: 14px;
+  color: #ffb4b4;
+  background: rgba(255, 0, 0, 0.18);
+  padding: 10px;
+  border-radius: 12px;
+}
+
+/* WEATHER CARD */
+.weather-card {
+  padding: 26px;
+  border-radius: 22px;
+  background: rgba(0, 0, 0, 0.35);
+  animation: fadeIn 0.4s ease;
+}
+
+.weather-hero {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.weather-hero h2 {
+  font-size: 22px;
+  opacity: 0.85;
+}
+
+.temp {
+  font-size: 80px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.condition {
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+/* DETAILS */
+.weather-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.weather-box {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.weather-box:hover {
+  transform: translateY(-6px) scale(1.02);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.weather-box span {
+  display: block;
+  font-size: 12px;
+  opacity: 0.7;
+  margin-bottom: 4px;
+}
+
+.weather-box strong {
+  font-size: 18px;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: auto;
+  padding: 20px 0 26px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+  z-index: 2;
+  text-align: center;
+}
+
+.footer span {
+  color: #fff;
+  font-weight: 600;
+}
+
+
+.footer span {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
