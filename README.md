@@ -1,37 +1,71 @@
-🌦️ Weather Dashboard
+Weather Dashboard
 
-A modern, responsive weather application built with React and Vite, featuring a clean glassmorphism UI and real-time weather data.
+A modern weather application built with React and Vite, featuring a clean glassmorphism interface and real-time weather data using the OpenWeather API.
 
-🔗 Live Demo: https://your-vercel-link
+Live Demo: https://your-vercel-link
 
-📦 GitHub Repo: https://github.com/hardikmore/weather-dashboard
+Repository: https://github.com/hardikmore/weather-dashboard
 
-✨ Features
+Features
 
-🌍 Search weather by city name
+Search weather by city name
 
-🌡️ Real-time temperature, humidity, wind & pressure
+Real-time temperature, humidity, wind speed and conditions
 
-⌨️ Keyboard support (press Enter to search)
+Keyboard support (Enter to search)
 
-⏳ Loading & error handling
+Loading and error handling
 
-🎨 Modern glassmorphism UI with cinematic background
+Glassmorphism UI with cinematic background
 
-📱 Responsive design
+Fully responsive design
 
-🚀 Deployed on Vercel
-
-🛠️ Tech Stack
+Tech Stack
 
 React (Vite)
 
 JavaScript (ES6+)
 
-CSS (Plain CSS, no frameworks)
+CSS (custom, no UI libraries)
 
 OpenWeather API
 
-Vercel (Deployment)
+Vercel (deployment)
 
-📸 Screenshots
+Environment Setup
+
+Create a .env file in the root directory:
+
+VITE_WEATHER_API_KEY=your_openweather_api_key
+
+Local Development
+git clone https://github.com/hardikmore/weather-dashboard.git
+cd weather-dashboard
+npm install
+npm run dev
+
+Screenshots
+
+Add screenshots here if you want (optional but recommended).
+
+Learning Outcomes
+
+API integration and async data handling
+
+UI state management (loading, error, success)
+
+Environment variables in Vite
+
+Modern UI design with glassmorphism
+
+Deploying frontend apps to production
+
+Author
+
+Hardik More
+
+GitHub: https://github.com/hardikmore
+
+License
+
+MIT License
