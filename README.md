@@ -1,71 +1,83 @@
-Weather Dashboard
+# Weather Dashboard
 
-A modern weather application built with React and Vite, featuring a clean glassmorphism interface and real-time weather data using the OpenWeather API.
+A modern weather application built with **React** and **Vite**, featuring a clean glassmorphism interface and real-time weather data powered by the **OpenWeather API**.
 
-Live Demo: https://your-vercel-link
+---
 
-Repository: https://github.com/hardikmore/weather-dashboard
+## 🔗 Live Links
 
-Features
+- **Live Demo:** https://weather-dashboard-chi-tan.vercel.app/
+- **Repository:** https://github.com/morehardik55/weather-dashboard
 
-Search weather by city name
+---
 
-Real-time temperature, humidity, wind speed and conditions
+## ✨ Features
 
-Keyboard support (Enter to search)
+- Search weather by city name  
+- Real-time temperature, humidity, wind speed and conditions  
+- Keyboard support (press Enter to search)  
+- Loading and error handling  
+- Glassmorphism UI with cinematic background  
+- Fully responsive design  
 
-Loading and error handling
+---
 
-Glassmorphism UI with cinematic background
+## 🛠 Tech Stack
 
-Fully responsive design
+- React (Vite)
+- JavaScript (ES6+)
+- CSS (Custom, no UI libraries)
+- OpenWeather API
+- Vercel (Deployment)
 
-Tech Stack
+---
 
-React (Vite)
 
-JavaScript (ES6+)
+## ⚙️ Environment Variables
 
-CSS (custom, no UI libraries)
+Create a `.env` file in the project root:
 
-OpenWeather API
-
-Vercel (deployment)
-
-Environment Setup
-
-Create a .env file in the root directory:
-
+```env
 VITE_WEATHER_API_KEY=your_openweather_api_key
 
-Local Development
+
+🚀 Local Setup
 git clone https://github.com/hardikmore/weather-dashboard.git
 cd weather-dashboard
 npm install
 npm run dev
 
-Screenshots
 
-Add screenshots here if you want (optional but recommended).
-
-Learning Outcomes
+📚 What I Learned
 
 API integration and async data handling
 
-UI state management (loading, error, success)
+State management for loading and error states
 
 Environment variables in Vite
 
-Modern UI design with glassmorphism
+Glassmorphism UI design principles
 
 Deploying frontend apps to production
 
-Author
 
+👤 Author
 Hardik More
+GitHub: https://github.com/morehardik55
 
-GitHub: https://github.com/hardikmore
 
-License
+📄 License
 
-MIT License
+This project is licensed under the MIT License.
+
+
+📸 Screenshots -
+
+IMAGE OF MAIN WEBPAGE - 
+<img width="1919" height="857" alt="image" src="https://github.com/user-attachments/assets/a6355649-cbf5-43a9-b204-e45bd1beedec" />
+
+IMAGE OF SEARCHED CITY (1)-
+<img width="1918" height="856" alt="image" src="https://github.com/user-attachments/assets/7d91b504-3e90-4677-ab4a-339ae5f9e565" />
+
+IMAGE OF SEARCHED CITY (2)-
+<img width="1919" height="840" alt="image" src="https://github.com/user-attachments/assets/efe5cb76-86e1-4778-8657-e7707f298a95" />
