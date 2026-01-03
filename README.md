@@ -1,18 +1,79 @@
-# React + Vite
+# Weather Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern weather application built with **React** and **Vite**, featuring a clean glassmorphism interface and real-time weather data powered by the **OpenWeather API**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔗 Live Links
 
-## React Compiler
+- **Live Demo:** https://weather-dashboard-chi-tan.vercel.app/
+- **Repository:** https://github.com/morehardik55/weather-dashboard
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## ✨ Features
 
-## Expanding the ESLint configuration
+- Search weather by city name  
+- Real-time temperature, humidity, wind speed and conditions  
+- Keyboard support (press Enter to search)  
+- Loading and error handling  
+- Glassmorphism UI with cinematic background  
+- Fully responsive design  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠 Tech Stack
+
+- React (Vite)
+- JavaScript (ES6+)
+- CSS (Custom, no UI libraries)
+- OpenWeather API
+- Vercel (Deployment)
+
+
+---
+
+
+🚀 Local Setup
+git clone https://github.com/your_username/weather-dashboard.git
+cd weather-dashboard
+npm install
+npm run dev
+
+
+
+📚 What I Learned
+
+API integration and async data handling
+
+State management for loading and error states
+
+Environment variables in Vite
+
+Glassmorphism UI design principles
+
+Deploying frontend apps to production
+
+
+
+👤 Author
+Hardik More
+GitHub: https://github.com/morehardik55
+
+
+
+📄 License
+
+This project is licensed under the MIT License.
+
+
+📸 Screenshots -
+
+IMAGE OF MAIN WEBPAGE - 
+<img width="1919" height="857" alt="image" src="https://github.com/user-attachments/assets/a6355649-cbf5-43a9-b204-e45bd1beedec" />
+
+IMAGE OF SEARCHED CITY (1)-
+<img width="1918" height="856" alt="image" src="https://github.com/user-attachments/assets/7d91b504-3e90-4677-ab4a-339ae5f9e565" />
+
+IMAGE OF SEARCHED CITY (2)-
+<img width="1919" height="840" alt="image" src="https://github.com/user-attachments/assets/efe5cb76-86e1-4778-8657-e7707f298a95" />
