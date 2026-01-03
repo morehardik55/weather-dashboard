@@ -64,18 +64,19 @@ function App() {
     return "🌤️";
   };
 
-  
   return (
     <div
-  className="app"
-  style={{
-    backgroundImage: `
-      linear-gradient(${getOverlay()}, rgba(0,0,0,0.7)),
-      url(${bgImage})
-    `,
-  }}
->
-
+      className="app"
+      style={{
+        backgroundImage: `
+          linear-gradient(${getOverlay()}, rgba(0,0,0,0.7)),
+          url(${bgImage})
+        `,
+      }}
+    >
+      <div className="animated-bg"></div>
+      <div className="particles"></div>
+      
       <div className="card">
         <h1>Weather</h1>
 

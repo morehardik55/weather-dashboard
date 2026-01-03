@@ -16,22 +16,59 @@ body {
   position: relative;
   min-height: 100vh;
   width: 100vw;
+  overflow: hidden;
 
   background-image:
     linear-gradient(
-      rgba(5, 8, 20, 0.75),
-      rgba(5, 8, 20, 0.9)
+      rgba(5, 8, 20, 0.6),
+      rgba(5, 8, 20, 0.75)
     ),
     url("./assets/weather-bg.jpg");
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+/* ANIMATED GRADIENT BACKGROUND */
+.animated-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 200, 100, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(255, 183, 77, 0.25) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 220, 150, 0.2) 0%, transparent 60%),
+    radial-gradient(circle at 40% 20%, rgba(100, 181, 246, 0.15) 0%, transparent 50%);
+  animation: gradientShift 15s ease infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* PARTICLES/STARS EFFECT */
+.particles {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent),
+    radial-gradient(1px 1px at 80% 10%, white, transparent),
+    radial-gradient(2px 2px at 90% 60%, white, transparent),
+    radial-gradient(1px 1px at 33% 80%, white, transparent),
+    radial-gradient(2px 2px at 10% 40%, white, transparent),
+    radial-gradient(1px 1px at 70% 30%, white, transparent);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: sparkle 20s linear infinite;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
 }
 
 
@@ -47,58 +84,116 @@ body {
     rgba(0, 0, 0, 0.7)
   );
   pointer-events: none;
+  z-index: 0;
 }
 
 /* GLASS CARD */
 .card {
   position: relative;
   width: 100%;
-  max-width: 450px;
-  padding: 40px;
-  border-radius: 28px;
+  max-width: 480px;
+  padding: 48px;
+  border-radius: 32px;
 
-  background: rgba(18, 22, 40, 0.85);
-  backdrop-filter: blur(20px) saturate(180%);
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.08) 100%),
+    rgba(18, 22, 40, 0.75);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
 
   box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.6),
+    0 40px 100px rgba(0, 0, 0, 0.7),
+    0 20px 60px rgba(0, 0, 0, 0.5),
     0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 28px;
   
   z-index: 1;
-  animation: cardSlideIn 0.6s ease-out;
+  animation: cardSlideIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 50px 120px rgba(0, 0, 0, 0.8),
+    0 25px 70px rgba(0, 0, 0, 0.6),
+    0 10px 40px rgba(0, 0, 0, 0.5),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 
 /* AMBIENT GLOW */
 .card::before {
   content: "";
   position: absolute;
-  inset: -4px;
+  inset: -6px;
   border-radius: inherit;
   background: linear-gradient(
     135deg,
-    rgba(138, 99, 255, 0.35),
-    rgba(255, 200, 100, 0.25)
+    rgba(138, 99, 255, 0.4),
+    rgba(255, 200, 100, 0.3),
+    rgba(100, 181, 246, 0.25)
   );
-  filter: blur(45px);
+  filter: blur(60px);
   z-index: -1;
+  opacity: 0.8;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(138, 99, 255, 0.2),
+    rgba(255, 200, 100, 0.15)
+  );
+  filter: blur(20px);
+  z-index: -1;
+  opacity: 0.6;
 }
 
 /* TITLE */
 .card h1 {
-  font-size: 36px;
-  font-weight: 800;
-  letter-spacing: -1px;
-  background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+  font-size: 42px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #e0e7ff 30%,
+    #c7d2fe 60%,
+    #ffffff 100%
+  );
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-align: center;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  animation: gradientText 5s ease infinite;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.card h1::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(138, 99, 255, 0.8), transparent);
+  border-radius: 2px;
+  animation: shimmer 2s ease-in-out infinite;
 }
 
 /* SEARCH */
@@ -109,45 +204,59 @@ body {
 
 .input-group input {
   flex: 1;
-  padding: 16px 20px;
-  border-radius: 18px;
+  padding: 18px 24px;
+  border-radius: 20px;
   font-size: 16px;
   font-weight: 400;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.15);
   outline: none;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
 }
 
 .input-group input::placeholder {
   color: rgba(255, 255, 255, 0.5);
+  transition: opacity 0.3s ease;
+}
+
+.input-group input:focus::placeholder {
+  opacity: 0.3;
 }
 
 .input-group input:focus {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(138, 99, 255, 0.5);
-  box-shadow: 0 0 0 4px rgba(138, 99, 255, 0.1);
-  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(138, 99, 255, 0.6);
+  box-shadow: 
+    0 0 0 4px rgba(138, 99, 255, 0.15),
+    0 8px 24px rgba(138, 99, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
 }
 
 .input-group button {
-  padding: 0 28px;
-  border-radius: 18px;
+  padding: 18px 32px;
+  border-radius: 20px;
   border: none;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
   color: white;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background-size: 200% 200%;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   white-space: nowrap;
-  min-width: 120px;
+  min-width: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 
+    0 8px 24px rgba(102, 126, 234, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  animation: gradientShift 3s ease infinite;
 }
 
 .input-group button::before {
@@ -166,9 +275,12 @@ body {
 }
 
 .input-group button:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
-  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 
+    0 16px 40px rgba(102, 126, 234, 0.6),
+    0 8px 20px rgba(118, 75, 162, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background-position: 100% 0;
 }
 
 .input-group button:active {
@@ -208,45 +320,107 @@ body {
 
 /* WEATHER CARD */
 .weather-card {
-  padding: 32px;
-  border-radius: 24px;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 36px;
+  border-radius: 28px;
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%),
+    rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: fadeIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: visible;
+  z-index: 10;
+}
+
+.weather-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(138, 99, 255, 0.05) 0%,
+    transparent 70%
+  );
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .weather-hero {
   text-align: center;
   margin-bottom: 28px;
+  position: relative;
+  z-index: 10;
 }
 
 .weather-icon {
-  font-size: 80px;
-  margin-bottom: 8px;
-  animation: float 3s ease-in-out infinite;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  font-size: 96px;
+  margin-bottom: 12px;
+  animation: float 4s ease-in-out infinite, iconGlow 3s ease-in-out infinite;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+  display: inline-block;
+  position: relative;
+  z-index: 10;
+}
+
+.weather-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(138, 99, 255, 0.1), transparent);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .weather-hero h2 {
   font-size: 26px;
-  font-weight: 600;
-  opacity: 0.9;
+  font-weight: 700;
   margin-bottom: 8px;
   letter-spacing: 0.5px;
+  color: #ffffff !important;
+  position: relative;
+  z-index: 10;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  display: block;
 }
 
 .temp {
-  font-size: 88px;
+  font-size: 100px;
   font-weight: 900;
   line-height: 1;
-  letter-spacing: -3px;
-  background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+  letter-spacing: -4px;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #e0e7ff 25%,
+    #c7d2fe 50%,
+    #a5b4fc 75%,
+    #ffffff 100%
+  );
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin: 8px 0;
+  margin: 12px 0;
+  animation: gradientText 4s ease infinite;
+  text-shadow: 0 0 60px rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 2;
 }
 
 .condition {
@@ -256,24 +430,39 @@ body {
   opacity: 0.8;
   font-weight: 500;
   margin-top: 4px;
+  color: rgba(255, 255, 255, 0.9);
+  z-index: 2;
+  position: relative;
 }
 
 /* DETAILS */
 .weather-details {
-  display: grid;
+  display: grid !important;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+  margin-top: 24px !important;
+  position: relative;
+  z-index: 10;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .weather-box {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
-  padding: 20px 16px;
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.15) 100%);
+  border-radius: 20px;
+  padding: 24px 20px !important;
   text-align: center;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  min-height: 80px;
 }
 
 .weather-box::before {
@@ -292,19 +481,26 @@ body {
 }
 
 .weather-box:hover {
-  transform: translateY(-8px) scale(1.03);
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(138, 99, 255, 0.3);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(-10px) scale(1.05);
+  background: 
+    linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 100%);
+  border-color: rgba(138, 99, 255, 0.5);
+  box-shadow: 
+    0 16px 32px rgba(0, 0, 0, 0.4),
+    0 8px 16px rgba(138, 99, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .weather-label {
   display: block;
   font-size: 13px;
-  opacity: 0.75;
   margin-bottom: 8px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.9) !important;
+  position: relative;
+  z-index: 10;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .weather-box span {
@@ -316,9 +512,25 @@ body {
 }
 
 .weather-box strong {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 800;
   display: block;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 2;
+}
+
+/* DAY THEME - Warm values */
+.app.day-theme .weather-box strong {
+  background: linear-gradient(135deg, #ffffff 0%, #ffe0b2 100%);
+}
+
+/* NIGHT THEME - Cool values */
+.app.night-theme .weather-box strong {
+  background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
 }
 
 /* FOOTER */
@@ -346,31 +558,122 @@ body {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px) scale(0.95);
+    transform: translateY(30px) scale(0.9) rotateX(10deg);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1) rotateX(0deg);
   }
 }
 
 @keyframes cardSlideIn {
   from {
     opacity: 0;
-    transform: translateY(30px) scale(0.9);
+    transform: translateY(50px) scale(0.85) rotateY(-5deg);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0) scale(1) rotateY(0deg);
   }
 }
 
 @keyframes float {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+  66% {
+    transform: translateY(-6px) rotate(-2deg);
+  }
+}
+
+@keyframes iconGlow {
+  0%, 100% {
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 20px rgba(138, 99, 255, 0.3));
   }
   50% {
-    transform: translateY(-10px);
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 30px rgba(138, 99, 255, 0.5));
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.3;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradientText {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.5;
+    transform: translateX(-50%) scaleX(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scaleX(1.2);
+  }
+  100% {
+    opacity: 0.5;
+    transform: translateX(-50%) scaleX(0.8);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sparkle {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-200px);
   }
 }
 
@@ -395,23 +698,38 @@ body {
 /* RESPONSIVE DESIGN */
 @media (max-width: 480px) {
   .card {
-    padding: 28px 24px;
-    max-width: 90%;
+    padding: 32px 24px;
+    max-width: 92%;
+    border-radius: 24px;
   }
   
   .card h1 {
-    font-size: 28px;
+    font-size: 32px;
   }
   
   .temp {
-    font-size: 72px;
+    font-size: 76px;
   }
   
   .weather-icon {
-    font-size: 64px;
+    font-size: 72px;
   }
   
   .weather-details {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .weather-box {
+    padding: 20px 16px;
+  }
+  
+  .input-group {
+    flex-direction: column;
+  }
+  
+  .input-group button {
+    width: 100%;
+    min-width: unset;
   }
 }
