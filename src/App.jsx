@@ -35,6 +35,7 @@ function App() {
     }
   };
 
+
   const getOverlay = () => {
     if (!weather) return "rgba(0,0,0,0.30)";
 
@@ -47,6 +48,23 @@ function App() {
     return "rgba(0,0,0,0.55)";
   };
 
+  const getWeatherIcon = () => {
+    if (!weather) return "🌤️";
+    
+    const condition = weather.weather[0].main.toLowerCase();
+    const icon = weather.weather[0].icon;
+    
+    if (condition.includes("clear")) return "☀️";
+    if (condition.includes("cloud")) return icon.includes("d") ? "⛅" : "☁️";
+    if (condition.includes("rain")) return "🌧️";
+    if (condition.includes("snow")) return "❄️";
+    if (condition.includes("thunder")) return "⛈️";
+    if (condition.includes("mist") || condition.includes("fog")) return "🌫️";
+    
+    return "🌤️";
+  };
+
+  
   return (
     <div
   className="app"
@@ -71,7 +89,11 @@ function App() {
           />
 
           <button onClick={fetchWeather} disabled={loading}>
-            {loading ? "..." : "Get"}
+            {loading ? (
+              <span className="loading-spinner"></span>
+            ) : (
+              <span>Get Weather</span>
+            )}
           </button>
         </div>
 
@@ -82,6 +104,7 @@ function App() {
         {weather && (
           <div className="weather-card">
             <div className="weather-hero">
+              <div className="weather-icon">{getWeatherIcon()}</div>
               <h2>{weather.name}</h2>
               <div className="temp">{Math.round(weather.main.temp)}°</div>
               <div className="condition">
@@ -91,22 +114,22 @@ function App() {
 
             <div className="weather-details">
               <div className="weather-box">
-                <span>Humidity</span>
+                <span className="weather-label">💧 Humidity</span>
                 <strong>{weather.main.humidity}%</strong>
               </div>
 
               <div className="weather-box">
-                <span>Feels Like</span>
+                <span className="weather-label">🌡️ Feels Like</span>
                 <strong>{Math.round(weather.main.feels_like)}°C</strong>
               </div>
 
               <div className="weather-box">
-                <span>Min Temp</span>
+                <span className="weather-label">⬇️ Min Temp</span>
                 <strong>{Math.round(weather.main.temp_min)}°C</strong>
               </div>
 
               <div className="weather-box">
-                <span>Max Temp</span>
+                <span className="weather-label">⬆️ Max Temp</span>
                 <strong>{Math.round(weather.main.temp_max)}°C</strong>
               </div>
             </div>
